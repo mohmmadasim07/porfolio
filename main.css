@@ -8,6 +8,8 @@
 body {
   background-image: url("background.png");
   width: 100%;
+  max-width: 2000px;
+  height: 100vh;
   color: white;
   font-family: "Poppins", sans-serif;
   color: white;
@@ -16,28 +18,33 @@ body {
 .container {
   margin: 20px 7%;
 }
-.logo {
-  width: 20%;
-}
 
-nav {
-  float: right;
-  margin-top: -80px;
-  /* border: 2px solid red; */
-}
-
-nav ul {
+/** navbar ***/
+.navbar {
   display: flex;
   flex-direction: row;
-
-  list-style: none;
-}
-nav ul li a {
-  margin-right: 25px;
-  color: white;
+  justify-content: space-between;
   font-size: 20px;
+}
+.link ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+.link ul li a {
+  color: white;
   text-decoration: none;
 }
+.link ul li a:hover {
+  border-bottom: 1px solid red;
+}
+.logo img {
+  margin-top: -17px;
+}
+#tog {
+  display: none;
+}
+
+/* ------------------*-*/
 /* main section */
 
 .sec h2 {
@@ -45,39 +52,21 @@ nav ul li a {
 }
 .sec h1 {
   font-size: 40px;
+  letter-spacing: 4px;
+  font-weight: 200;
+}
+
+.sec h3 {
+  margin: 10px 0;
 }
 .sec h4 {
   font-size: 30px;
-  margin: 15px 0;
-  width: 30%;
-  position: relative;
-  color: black;
-  text-transform: uppercase;
-}
-.sec h4::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: #ff4d4d;
-  border-right: 2px solid #ff4d4d;
-
+  margin: 10px 0 20px 0;
+  color: #00c0a6;
+  animation: typing 7s steps(23) infinite;
   overflow: hidden;
-  animation: slide 6s infinite;
-}
-@keyframes slide {
-  0%,
-  10%,
-  100% {
-    width: 0%;
-  }
-
-  70%,
-  90% {
-    width: 100%;
-  }
+  white-space: nowrap;
+  border-right: 2px solid #00c0a6;
 }
 
 .contact-logo ul {
@@ -89,16 +78,18 @@ nav ul li a {
   margin: 20px 20px 40px 0;
 }
 .contact-logo img {
-  width: 80px;
+  width: 70px;
   margin-bottom: 10px;
 }
 .contact-logo img:hover {
-  animation: shake 0.6s infinite;
-  width: 82px;
+  animation: shake 0.6s ease-in-out;
 }
-button {
-  width: 120px;
-  margin-right: 40px;
+.contact-btn {
+  display: flex;
+}
+.sec button {
+  width: 180px;
+  margin: 10px 40px 80px 0;
   border-radius: 8px;
   border: none;
   font-size: 20px;
@@ -108,9 +99,90 @@ button {
   color: white;
   cursor: pointer;
 }
-button:hover {
+button a {
+  text-decoration: none;
+  color: white;
+}
+.sec button:hover {
   animation: shake 0.6s infinite;
 }
+
+/* projects */
+
+/* -------------*/
+.sec2 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.articles {
+  width: 40%;
+  height: 330px;
+  border: 2px outset rgb(255, 255, 255);
+  border-radius: 8px;
+  margin: 20px;
+  padding: 25px 0 0 0;
+  text-align: center;
+  color: white;
+}
+.articles h3 {
+  margin: 10px 0;
+}
+
+.articles img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 210px;
+  height: 180px;
+}
+.articles button {
+  width: 180px;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 20px;
+  font-weight: 300;
+  height: 50px;
+  background-color: #17a2b8;
+  color: white;
+  cursor: pointer;
+}
+/* blogs */
+
+.blogs {
+  width: 40%;
+  height: 120px;
+  border: 2px outset rgb(255, 255, 255);
+  border-radius: 8px;
+  margin: 20px;
+  padding: 25px 0 0 0;
+  text-align: center;
+  color: white;
+}
+.blogs h2 {
+  margin: 0 0 20px 0;
+}
+.blogs a {
+  color: orangered;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+/* -------------*/
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(26, 24, 24);
+  color: white;
+  text-align: center;
+}
+/* animation */
 
 @keyframes shake {
   0% {
@@ -129,12 +201,46 @@ button:hover {
     transform: translate(-1px, 1px) rotate(-1deg);
   }
 }
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: rgb(26, 24, 24);
-  color: white;
-  text-align: center;
+@keyframes typing {
+  0% {
+    width: 0ch;
+  }
+  50% {
+    width: 23ch;
+  }
+  100% {
+    width: 0ch;
+  }
+}
+
+/* ------------------------     */
+@media only screen and (max-width: 900px) {
+  #tog {
+    display: block;
+    float: right;
+  }
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .link ul li {
+    display: block;
+    padding-top: 30px;
+  }
+  .hide {
+    display: none;
+  }
+  .articles {
+    width: 100%;
+    height: fit-content;
+  }
+  .blogs {
+    width: 100%;
+    height: 140px;
+  }
+  .sec h4 {
+    font-size: 25px;
+  }
 }
